@@ -7,13 +7,13 @@ on:
   workflow_dispatch:  # manual triggering
     inputs:
       version_number:
-        description: "Version number"
+        description: Version number
         required: true
-        default: "v1.2.12"
+        default: v1.2.12
       version_text:
-        description: "Description"
+        description: Description
         required: true
-        default: ""
+        default: ''
 
 jobs:
   release:
@@ -39,7 +39,7 @@ jobs:
       - name: Run prek pre-commit
         uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204  # v3.0.1
         with:
-          extra-args: '--all-files --quiet'
+          extra-args: --all-files --quiet
 
       - name: Preparations
         run: ln -s python-requirements.txt requirements.txt
@@ -47,7 +47,7 @@ jobs:
       - name: Python set up
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
         with:
-          python-version-file: ".python-version"
+          python-version-file: .python-version
 
       - name: Check chapters for known issues
         run: python3 scripts/check_chapters.py
